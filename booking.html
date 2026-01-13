@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking | ELEVÉ Colombo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Montserrat', sans-serif; background-color: #000; color: white; }
+        .serif { font-family: 'Cormorant Garamond', serif; }
+        
+        .booking-bg {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1600');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Input Styling - High Visibility */
+        input, select { 
+            appearance: none; 
+            -webkit-appearance: none;
+            background: rgba(255, 255, 255, 0.07) !important; 
+            border: 1px solid rgba(255, 255, 255, 0.2) !important; 
+            color: white !important;
+            padding: 16px !important;
+            border-radius: 0px !important;
+            transition: all 0.4s ease;
+            width: 100%;
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* Hover & Focus states for better interaction */
+        input:hover, select:hover {
+            background: rgba(255, 255, 255, 0.12) !important;
+            border-color: rgba(255, 255, 255, 0.4) !important;
+        }
+
+        input:focus, select:focus { 
+            border-color: white !important;
+            background: rgba(255, 255, 255, 0.2) !important;
+            outline: none;
+        }
+
+        /* Making sure Dropdown options are visible */
+        select option {
+            background-color: #1a1a1a; /* Dark solid background for visibility */
+            color: white;
+            padding: 20px;
+        }
+
+        /* Custom Arrow */
+        .select-wrapper { position: relative; }
+        .select-wrapper::after {
+            content: '↓';
+            font-family: serif;
+            position: absolute;
+            right: 20px;
+            bottom: 14px;
+            color: white;
+            pointer-events: none;
+        }
+
+        /* Date Picker UI Polish */
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1); /* Makes the calendar icon white */
+            opacity: 0.8;
+            cursor: pointer;
+            transform: scale(1.2);
+        }
+
+        /* Success Modal */
+        #successModal {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        #successModal.active {
+            display: flex;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="booking-bg min-h-screen flex items-center justify-center p-4 md:p-12">
+
+    <div class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-12 bg-black/40 backdrop-blur-3xl border border-white/10 shadow-2xl overflow-hidden relative">
+        
+        <div class="md:col-span-5 p-12 flex flex-col justify-between border-r border-white/5 hidden md:flex">
+            <div>
+                <a href="index.html" class="text-[10px] tracking-[0.5em] text-white/40 uppercase hover:text-white transition">← Return</a>
+                <h1 class="text-6xl serif text-white mt-16 leading-tight italic">ELEVÉ<br>Colombo</h1>
+            </div>
+            <div class="space-y-8">
+                <div>
+                    <p class="text-[9px] uppercase tracking-[0.4em] text-white/30 mb-3 font-bold">Atelier Address</p>
+                    <p class="text-sm text-white font-light tracking-wide italic">42 Horton Place, Colombo 07</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="md:col-span-7 p-8 md:p-16">
+            <header class="mb-12">
+                <h2 class="text-xs tracking-[0.6em] text-white/40 uppercase mb-2">Private Appointment</h2>
+                <p class="serif text-3xl text-white italic">Request Your Session</p>
+            </header>
+
+            <form id="bookingForm" class="space-y-8">
+                <div>
+                    <label class="text-[9px] uppercase font-bold tracking-[0.3em] text-white/60 block mb-2">Guest Identity</label>
+                    <input type="text" placeholder="Janaan Ahmad" required>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <label class="text-[9px] uppercase font-bold tracking-[0.3em] text-white/60 block mb-2">Email Address</label>
+                        <input type="email" placeholder="janaan@icloud.com" required>
+                    </div>
+                    <div>
+                        <label class="text-[9px] uppercase font-bold tracking-[0.3em] text-white/60 block mb-2">Mobile Number</label>
+                        <input type="tel" placeholder="+94 77 123 4567" required>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="select-wrapper">
+                        <label class="text-[9px] uppercase font-bold tracking-[0.3em] text-white/60 block mb-2">Select Expertise</label>
+                        <select id="expertiseSelect" required>
+                            <option value="" disabled selected>Choose a Ritual</option>
+                            <option>Signature Cut & Blowout</option>
+                            <option>Editorial Balayage</option>
+                            <option>Kérastase Scalp Ritual</option>
+                            <option>Bridal Consultation</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-[9px] uppercase font-bold tracking-[0.3em] text-white/60 block mb-2">Preferred Date</label>
+                        <input type="date" required>
+                    </div>
+                </div>
+
+                <div class="pt-8">
+                    <button type="submit" class="w-full bg-white text-black py-6 text-[10px] uppercase tracking-[0.5em] font-bold hover:bg-neutral-200 transition-all duration-500 transform hover:scale-[1.01]">
+                        Send Reservation Request
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div id="successModal" class="absolute inset-0 z-50 bg-black/95 backdrop-blur-2xl flex flex-col items-center justify-center p-12 text-center">
+            <div class="max-w-md animate-fade-in">
+                <div class="text-[10px] tracking-[0.8em] text-white/40 uppercase mb-8">Ayubowan</div>
+                <h2 class="text-5xl serif text-white italic mb-6">Reservation Pending</h2>
+                <div class="h-[1px] w-16 bg-white/20 mx-auto mb-10"></div>
+                <p class="text-sm font-light leading-loose text-white/60 mb-12 uppercase tracking-widest">
+                    Thank you, <span id="guestName" class="text-white border-b border-white/30">Janaan</span>. <br>Your request has been delivered. <br>Our concierge will verify the schedule and contact you shortly.
+                </p>
+                <a href="index.html" class="inline-block border border-white/20 px-12 py-5 text-[10px] uppercase tracking-[0.5em] text-white hover:bg-white hover:text-black transition-all">
+                    Return Home
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('bookingForm');
+        const modal = document.getElementById('successModal');
+        const guestNameSpan = document.getElementById('guestName');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Personalize the popup
+            const nameInput = form.querySelector('input[type="text"]').value;
+            guestNameSpan.textContent = nameInput;
+
+            // Trigger Modal
+            modal.classList.add('active');
+        });
+    </script>
+
+</body>
+</html>

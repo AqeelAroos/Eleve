@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | ELEVÉ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Montserrat', sans-serif; background-color: #fdfbf7; color: #1a1a1a; }
+        h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; text-transform: uppercase; letter-spacing: 0.1em; }
+        
+        /* The dark visibility box */
+        .text-overlay-box {
+            background: rgba(26, 26, 26, 0.85); /* Deep Charcoal */
+            backdrop-filter: blur(10px); /* Blur effect */
+            padding: 2.5rem;
+            border-left: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .service-image-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Darkens the image slightly to make text near it pop */
+        .service-image-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(0,0,0,0.4), transparent);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="bg-black text-white py-6 px-10 flex justify-between items-center sticky top-0 z-50">
+        <a href="index.html" class="text-[10px] tracking-widest uppercase flex items-center gap-2 hover:opacity-50 transition">
+            <span>←</span> Home
+        </a>
+        <div class="text-2xl font-light tracking-[0.4em] uppercase serif">ELEVÉ</div>
+        <a href="booking.html" class="bg-white text-black px-6 py-2 text-[10px] uppercase tracking-widest hover:bg-neutral-200">Book Now</a>
+    </nav>
+
+    <header class="py-20 text-center bg-[#1a1a1a] text-white">
+        <span class="text-[10px] uppercase tracking-[0.6em] text-neutral-500 block mb-4">The Atelier</span>
+        <h1 class="text-5xl md:text-7xl serif italic lowercase">the service menu</h1>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-20">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 mb-32 items-stretch">
+            <div class="lg:col-span-7 service-image-container h-[500px] lg:h-[700px]">
+                <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=1200" 
+                     class="w-full h-full object-cover grayscale-[20%]">
+            </div>
+            
+            <div class="lg:col-span-5 text-overlay-box text-white flex flex-col justify-center">
+                <h2 class="text-xs tracking-[0.5em] text-neutral-400 mb-8 block font-light">01 — CUT & SILHOUETTE</h2>
+                
+                <div class="space-y-12">
+                    <div class="group">
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h3 class="text-2xl serif text-white">Signature Cut</h3>
+                            <span class="text-lg serif italic text-neutral-400">Rs. 13 000</span>
+                        </div>
+                        <p class="text-sm text-neutral-300 font-light leading-loose">Precision tailoring designed for your unique bone structure and lifestyle.</p>
+                    </div>
+
+                    <div class="group">
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h3 class="text-2xl serif text-white">Couture Blowout</h3>
+                            <span class="text-lg serif italic text-neutral-400">Rs. 12 000</span>
+                        </div>
+                        <p class="text-sm text-neutral-300 font-light leading-loose">High-volume, long-lasting structure with luxury heat-protecting rituals.</p>
+                    </div>
+                    
+                    <a href="booking.html" class="inline-block mt-4 bg-white text-black px-8 py-4 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-200 transition">
+                        Reserve this service
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
+            <div class="lg:col-span-5 text-overlay-box text-white flex flex-col justify-center order-2 lg:order-1">
+                <h2 class="text-xs tracking-[0.5em] text-neutral-400 mb-8 block font-light">02 — COLOR ARTISTRY</h2>
+                
+                <div class="space-y-12">
+                    <div class="group">
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h3 class="text-2xl serif text-white">Bespoke Balayage</h3>
+                            <span class="text-lg serif italic text-neutral-400">Rs. 15 000 +</span>
+                        </div>
+                        <p class="text-sm text-neutral-300 font-light leading-loose">Hand-painted artistry that mimics natural light movement on hair.</p>
+                    </div>
+
+                    <div class="group">
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h3 class="text-2xl serif text-white">High-Shine Gloss</h3>
+                            <span class="text-lg serif italic text-neutral-400">Rs. 13 000</span>
+                        </div>
+                        <p class="text-sm text-neutral-300 font-light leading-loose">Infuse your hair with deep hydration and luminous, multidimensional shine.</p>
+                    </div>
+
+                    <a href="booking.html" class="inline-block mt-4 bg-white text-black px-8 py-4 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-200 transition">
+                        Reserve this service
+                    </a>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7 service-image-container h-[500px] lg:h-[700px] order-1 lg:order-2">
+                <img src="images/balayage.jpg" 
+                     class="w-full h-full object-cover grayscale-[20%]">
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-black text-white py-12 text-center">
+        <p class="text-[10px] tracking-[0.5em] uppercase opacity-40">&copy; 2026 ELEVÉ ATELIER</p>
+    </footer>
+
+</body>
+</html>
